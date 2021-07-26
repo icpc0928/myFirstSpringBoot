@@ -1,5 +1,8 @@
 package com.leo.springbootdemo.web;
 
+import com.leo.springbootdemo.domain.Book;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +16,21 @@ import java.util.Map;
 
 //@Controller         //裡面所做的mapping 若返回String 將會返回對應的path  (pom 需要導入 spring-boot-starter-thymeleaf 模板)   (for模板式的開發)
 @RestController   //裡面所做的mapping 若返回String 則保持返回String                                                      (單純回傳)
-@RequestMapping("/v1")
+@RequestMapping("/api/v1")
 public class HelloController {
+
+//    @Value("${book.name}")
+//    private String name;
+//    @Value("${book.author}")
+//    private String author;
+//    @Value("${book.isbn}")
+//    private String isbn;
+//    @Value("${book.description}")
+//    private String description;
+
+    @Autowired
+    private Book book;
+
 
     //RESTful
     //@RestController 在class上註解 ,使該class作為外部控制器 讓外部的請求可連上這
@@ -61,15 +77,18 @@ public class HelloController {
     //路徑傳參數  //使用@PathVariable 作為參數註解  ,但由客端傳送過來的永遠都是String 但簡單的類型這裡可以自動轉
     //且如果getMapping後定義的參數 跟方法內的參數不同,可額外定義  (故 要就定義傳送參數的名稱,不然就保持一致
     //且可對參數做正則表達式的規則 : {參數名:正則表達式}
-    @GetMapping("/books/{id}/{username:[a-z_]+}")
-    public Object getOne(@PathVariable long id, @PathVariable("username") String user){
+//    @GetMapping("/books/{id}/{username:[a-z_]+}")
+    @GetMapping("/books/{id}")
+    public Object getOne(@PathVariable long id){
         System.out.println("id: " + id);
-        System.out.println("user: " + user);
-        Map<String, Object> book = new HashMap<>();
-        book.put("name", "this is a book");
-        book.put("isbn", "54564655446");
-        book.put("author", "leo");
-        book.put("userName" , user);
+//        System.out.println("user: " + user);
+//        Map<String, Object> book = new HashMap<>();
+//        book.put("name", name);
+//        book.put("isbn", isbn);
+//        book.put("author", author);
+////        book.put("userName" , user);
+//        book.put("description", description);
+
 
         return book;
     }

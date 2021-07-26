@@ -1,7 +1,11 @@
+#   springBoot 啟動時優先尋找 resource內的 config資料夾(自己新增)
+#   內部有yml 則優先讀.yml 再讀.properties
+#   用途都是一樣的,定義文件配置
+
 server:
-  port: 8082
-  servlet:
-    context-path: /api
+  port: 8080
+#  servlet:
+#    context-path: /api
 logging:
   level:
     root: warn
@@ -9,6 +13,10 @@ logging:
   file:
     name: logs/my.log
 
-#   springBoot 啟動時優先尋找 resource內的 config資料夾(自己新增)
-#   內部有yml 則優先讀.yml 再讀.properties
-#   用途都是一樣的,定義文件配置
+#配置屬性 供方便使用 於類別內的參數上使用 @Value(${book.name})  下方定義名稱有上下級別之分(即book屬性底下的屬性)
+book:
+  name: 名稱
+  author: Leo
+  isbn: ${random.int}
+  description: ${book.name} , 這本書不錯
+
