@@ -2,16 +2,11 @@
 #   內部有yml 則優先讀.yml 再讀.properties
 #   用途都是一樣的,定義文件配置
 
-server:
-  port: 8080
-#  servlet:
-#    context-path: /api
-logging:
-  level:
-    root: warn
-    com.leo: debug
-  file:
-    name: logs/my.log
+#指定當前活躍的配置文件 就會運行application-dev.yml
+#配置文件格式 application-{自定義名字}.yml
+spring:
+  profiles:
+    active: dev
 
 #配置屬性 供方便使用 於類別內的參數上使用 @Value(${book.name})  下方定義名稱有上下級別之分(即book屬性底下的屬性)
 book:

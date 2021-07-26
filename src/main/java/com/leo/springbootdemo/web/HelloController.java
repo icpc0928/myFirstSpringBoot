@@ -28,8 +28,8 @@ public class HelloController {
 //    @Value("${book.description}")
 //    private String description;
 
-    @Autowired
-    private Book book;
+//    @Autowired
+//    private Book book;
 
 
     //RESTful
@@ -90,7 +90,8 @@ public class HelloController {
 //        book.put("description", description);
 
 
-        return book;
+//        return book;
+        return null;
     }
 
     @PostMapping("/books")
