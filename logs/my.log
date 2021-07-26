@@ -1,0 +1,16 @@
+2021-07-26 08:46:07.486  INFO 2696 --- [main] c.l.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication using Java 1.8.0_275 on LeosPC with PID 2696 (C:\Users\hikar\IdeaProjects\spring-boot-demo\target\classes started by hikar in C:\Users\hikar\IdeaProjects\spring-boot-demo)
+2021-07-26 08:46:07.488 DEBUG 2696 --- [main] c.l.s.SpringBootDemoApplication          : Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-07-26 08:46:07.488  INFO 2696 --- [main] c.l.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2021-07-26 08:46:08.450  INFO 2696 --- [main] c.l.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 1.295 seconds (JVM running for 1.892)
+2021-07-26 08:46:26.518  INFO 1176 --- [main] c.l.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication using Java 1.8.0_275 on LeosPC with PID 1176 (C:\Users\hikar\IdeaProjects\spring-boot-demo\target\classes started by hikar in C:\Users\hikar\IdeaProjects\spring-boot-demo)
+2021-07-26 08:46:26.521 DEBUG 1176 --- [main] c.l.s.SpringBootDemoApplication          : Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-07-26 08:46:26.521  INFO 1176 --- [main] c.l.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2021-07-26 08:46:27.491  INFO 1176 --- [main] c.l.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 1.31 seconds (JVM running for 1.916)
+2021-07-26 08:48:06.202  INFO 10288 --- [main] c.l.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication using Java 1.8.0_275 on LeosPC with PID 10288 (C:\Users\hikar\IdeaProjects\spring-boot-demo\target\classes started by hikar in C:\Users\hikar\IdeaProjects\spring-boot-demo)
+2021-07-26 08:48:06.205 DEBUG 10288 --- [main] c.l.s.SpringBootDemoApplication          : Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-07-26 08:48:06.205  INFO 10288 --- [main] c.l.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2021-07-26 08:48:07.149  INFO 10288 --- [main] c.l.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 1.301 seconds (JVM running for 1.931)
+2021-07-26 08:48:48.111  INFO 9952 --- [main] c.l.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication using Java 1.8.0_275 on LeosPC with PID 9952 (C:\Users\hikar\IdeaProjects\spring-boot-demo\target\classes started by hikar in C:\Users\hikar\IdeaProjects\spring-boot-demo)
+2021-07-26 08:48:48.113 DEBUG 9952 --- [main] c.l.s.SpringBootDemoApplication          : Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-07-26 08:48:48.114  INFO 9952 --- [main] c.l.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2021-07-26 08:48:49.060  INFO 9952 --- [main] c.l.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 1.299 seconds (JVM running for 1.92)

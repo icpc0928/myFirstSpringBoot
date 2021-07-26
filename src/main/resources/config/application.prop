@@ -1,0 +1,10 @@
+#自定義配置文件
+
+#定義port (預設8080)
+#server.port=8080
+
+#定義統一前綴的路徑
+server.servlet.context-path=/api
+logging.level.root=WARN
+logging.level.com.leo=DEBUG
+logging.file.name=logs/my.log

@@ -1,0 +1,14 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+logging:
+  level:
+    root: warn
+    com.leo: debug
+  file:
+    name: logs/my.log
+
+#   springBoot 啟動時優先尋找 resource內的 config資料夾(自己新增)
+#   內部有yml 則優先讀.yml 再讀.properties
+#   用途都是一樣的,定義文件配置
