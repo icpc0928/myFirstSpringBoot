@@ -16,7 +16,7 @@ import java.util.Map;
 
 //@Controller         //裡面所做的mapping 若返回String 將會返回對應的path  (pom 需要導入 spring-boot-starter-thymeleaf 模板)   (for模板式的開發)
 @RestController   //裡面所做的mapping 若返回String 則保持返回String                                                      (單純回傳)
-@RequestMapping("/api/v1")
+@RequestMapping("/api_hello/v1")
 public class HelloController {
 
 //    @Value("${book.name}")
