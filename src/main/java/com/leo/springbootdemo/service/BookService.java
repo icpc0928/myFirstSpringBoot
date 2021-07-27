@@ -5,6 +5,7 @@ import com.leo.springbootdemo.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,6 +90,27 @@ public class BookService {
     public List<Book> findByJPQL(int len){
         return bookRepository.findByJPQL(len);
     }
+
+    /**
+     * 自定義更新
+     * @param status
+     * @param id
+     * @return
+     */
+
+    public int updateByJPQL(int status, long id){
+        return bookRepository.updateByJPQL(status, id);
+    }
+
+    /**
+     * 自定義刪除
+     * @param id
+     * @return
+     */
+    public int deleteByJPQL(long id){
+        return bookRepository.deleteByJPQL(id);
+    }
+
 
 
 }
