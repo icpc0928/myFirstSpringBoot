@@ -41,4 +41,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("delete from Book b where b.id = ?1")
     int deleteByJPQL(long id);
 
+
+
 }

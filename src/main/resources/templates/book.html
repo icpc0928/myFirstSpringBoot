@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Book書單詳情</title>
+</head>
+<body>
+    <div>
+<!--        import: th (thymeleaf的標籤)-->
+<!--        標籤參照 https://kknews.cc/zh-tw/code/y8barvk.html-->
+        <p>
+            <strong>書名: </strong><span th:text = "${book.name}">我們</span>
+        </p>
+        <p>
+            <strong>作者: </strong><span th:text = "${book.author}">Leo</span>
+        </p>
+        <p>
+            <strong>說明: </strong><span th:text = "${book.description}">0.0.0</span>
+        </p>
+        <p>
+            <strong>狀態: </strong><span th:text = "${book.status}">0</span>
+        </p>
+    </div>
+
+<!--    *號就是直接繼承 book這個物件(有層級的關係)-->
+    <div th:object = "${book}">
+        <p>
+            <strong>書名: </strong><span th:text = "*{name}">我們</span>
+        </p>
+        <p>
+            <strong>作者: </strong><span th:text = "*{author}">Leo</span>
+        </p>
+        <p>
+            <strong>說明: </strong><span th:text = "*{description}">0.0.0</span>
+        </p>
+        <p>
+            <strong>狀態: </strong><span th:text = "*{status}">0</span>
+        </p>
+
+    </div>
+</body>
+</html>

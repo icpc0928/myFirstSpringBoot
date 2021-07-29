@@ -59,7 +59,7 @@ public class BookApp {
      * @return
      */
     @GetMapping("/books/{id}")
-    public Optional<Book> getOne(@PathVariable long id){
+    public Book getOne(@PathVariable long id){
         return bookService.findById(id);
     }
 
@@ -102,14 +102,17 @@ public class BookApp {
     }
 
     @PostMapping("/books/by")
-    public int findBy(@RequestParam long id){
+    public int findBy(@RequestParam long id,
+                      @RequestParam int status,
+                      @RequestParam long uid){
 //        return bookService.findByAuthor(author);
 //        return bookService.findByAuthorAndStatus(author, status);
 //        return bookService.findByDescriptionEndsWith(description);
 //        return bookService.findByDescriptionContains(description);
 //        return bookService.findByJPQL(len);
 //        return bookService.updateByJPQL(status, id);
-        return bookService.deleteByJPQL(id);
+//        return bookService.deleteByJPQL(id);
+        return bookService.deleteAndUpdate(id, status, uid);
     }
 
 

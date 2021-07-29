@@ -4,8 +4,8 @@ import com.leo.springbootdemo.domain.Book;
 import com.leo.springbootdemo.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,12 +32,13 @@ public class BookService {
     }
 
     /**
-     * 獲取一條書單信息
+     * 獲取一條書單信息  如果資料庫中沒有此id 則新增一個空的Book物件回傳 避免回傳null讓瀏覽器500
      * @param id
      * @return
      */
-    public Optional<Book> findById(long id){
-        return bookRepository.findById(id);
+    public Book findById(long id){
+        Optional<Book> optional = bookRepository.findById(id);
+        return optional.orElse(new Book());
     }
 
     /**
@@ -109,6 +110,25 @@ public class BookService {
      */
     public int deleteByJPQL(long id){
         return bookRepository.deleteByJPQL(id);
+    }
+
+
+    //一個方法涉及到兩次操作的狀況 => 刪除後更新 刪除成功但更新失敗的話....因為有Transactional 所以會rollback回復回去
+    /**
+     * 測試事務操作方法
+     * @param id
+     * @param status
+     * @param uid
+     * @return
+     */
+    @Transactional
+    public int deleteAndUpdate(long id, int status, long uid){
+        int dcount = bookRepository.deleteByJPQL(id);
+
+        int ucount = bookRepository.updateByJPQL(status, uid);
+
+        return dcount + ucount;
+
     }
 
 
