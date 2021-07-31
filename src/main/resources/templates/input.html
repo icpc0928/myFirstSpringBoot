@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>新增一本書</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container" style="max-width: 700px;">
+        <h2 class="pb-2 mt-4 mb-2 border-bottom">新增書單</h2>
+
+        <div class="card card-body bg-light bg-gradient">
+            <form action="/books"  method="post">
+                <div class="form-group">
+                    <label for="nameId">書名</label>
+                    <input type="text" name="name" id="nameId" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="authorId">作者</label>
+                    <input type="text" name="author" id="authorId" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="isbnId">isbn</label>
+                    <input type="text" name="isbn" id="isbnId" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="descriptionId">描述</label>
+                    <input type="text" name="description" id="descriptionId" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="statusId">狀態</label>
+                    <select name="status" id="statusId" class="form-control">
+                        <option value="0">想讀</option>
+                        <option value="1">在讀</option>
+                        <option value="2">已讀</option>
+                    </select>
+                </div>
+                <br>
+                <p class="text-center">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </p>
+            </form>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>

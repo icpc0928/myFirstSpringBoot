@@ -1,42 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
     <title>Book書單詳情</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--    thymeleaf模板要引入靜態資源 => th:href="@{/(根目錄為static路徑}"-->
+<!--    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}" href="../static/css/bootstrap-grid.css" >-->
+
 </head>
-<body>
-    <div>
 <!--        import: th (thymeleaf的標籤)-->
 <!--        標籤參照 https://kknews.cc/zh-tw/code/y8barvk.html-->
-        <p>
-            <strong>書名: </strong><span th:text = "${book.name}">我們</span>
-        </p>
-        <p>
-            <strong>作者: </strong><span th:text = "${book.author}">Leo</span>
-        </p>
-        <p>
-            <strong>說明: </strong><span th:text = "${book.description}">0.0.0</span>
-        </p>
-        <p>
-            <strong>狀態: </strong><span th:text = "${book.status}">0</span>
-        </p>
+<!-- th標籤進行參數判斷 switch if unless(跟if相反) -->
+<body th:object="${book}">
+
+    <div class="container" style="max-width: 700px;">
+        <h2 class="page-header" style="margin-top: 50px;">詳情</h2>
+        <div class="card card-body bg-light">
+
+            <p>
+                <strong>書名: </strong><span th:text = "${book.name}">我們</span>
+            </p>
+            <p>
+                <strong>作者: </strong><span th:text = "${book.author}">Leo</span>
+            </p>
+            <p>
+                <strong>說明: </strong><span th:text = "${book.description}">0.0.0</span>
+            </p>
+            <p th:switch="*{status}">
+                <strong>狀態: </strong>
+                <span th:case = "0">想讀</span>
+                <span th:case = "1">正在讀</span>
+                <span th:case = "2">已讀</span>
+            </p>
+            <div class="alert alert-success" th:unless="*{status == 0}">
+                <strong>不錯</strong>,你已經開始行動惹
+            </div>
+            <div class="alert alert-warning" th:if="*{status == 0}">
+                <strong>注意</strong>,你還沒開始呢
+            </div>
+            <a href="javascript:history.go(-1)" class="btn btn-primary">返回</a>
+        </div>
+
     </div>
 
-<!--    *號就是直接繼承 book這個物件(有層級的關係)-->
-    <div th:object = "${book}">
-        <p>
-            <strong>書名: </strong><span th:text = "*{name}">我們</span>
-        </p>
-        <p>
-            <strong>作者: </strong><span th:text = "*{author}">Leo</span>
-        </p>
-        <p>
-            <strong>說明: </strong><span th:text = "*{description}">0.0.0</span>
-        </p>
-        <p>
-            <strong>狀態: </strong><span th:text = "*{status}">0</span>
-        </p>
+    <!--    *號就是直接繼承 book這個物件(有層級的關係)-->
+<!--    <div>-->
+<!--&lt;!&ndash;    <div th:object = "${book}">&ndash;&gt;-->
+<!--        <p>-->
+<!--            <strong>書名: </strong><span th:text = "*{name}">我們</span>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <strong>作者: </strong><span th:text = "*{author}">Leo</span>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <strong>說明: </strong><span th:text = "*{description}">0.0.0</span>-->
+<!--        </p>-->
+<!--        <p th:switch="*{status}">-->
+<!--            <strong>狀態: </strong>-->
+<!--            <span th:case = "0">想讀</span>-->
+<!--            <span th:case = "1">正在讀</span>-->
+<!--            <span th:case = "2">已讀</span>-->
+<!--        </p>-->
+<!--    </div>-->
 
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--    <script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>-->
 </body>
 </html>
