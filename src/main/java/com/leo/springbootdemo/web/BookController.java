@@ -51,9 +51,25 @@ public class BookController {
      * @return
      */
     @GetMapping("/books/input")
-    public String inputPage(){
+    public String inputPage(Model model){
+        model.addAttribute("book", new Book());
         return "input";
     }
+
+    /**
+     * 跳轉到更新頁面input
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/books/{id}/input")
+    public String inputEditPage(@PathVariable long id, Model model){
+        Book book = bookService.findById(id);
+        model.addAttribute("book", book);
+        return "input";
+    }
+
+
 
     /**
      * 提交一個書單信息。   redirect 返回books頁面

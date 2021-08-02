@@ -21,6 +21,7 @@
                 <th>作者</th>
                 <th>說明</th>
                 <th>狀態</th>
+                <th>操作</th>
             </tr>
             </thead>
             <tbody>
@@ -44,6 +45,9 @@
                     <span th:case="1">在讀</span>
                     <span th:case="2">已讀</span>
                     <span th:case="*">默認狀態</span>
+                </td>
+                <td>
+                    <a href="#" th:href="@{/books/{id}/input(id=${book.id})}">更新</a>
                 </td>
             </tr>
             </tbody>

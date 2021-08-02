@@ -13,29 +13,32 @@
         <h2 class="pb-2 mt-4 mb-2 border-bottom">新增書單</h2>
 
         <div class="card card-body bg-light bg-gradient">
-            <form action="/books"  method="post">
+            <form action="/books" th:object="${book}" method="post">
+                <!--更新 資料庫的時候因為使用的跟新增的方法相同,故如果沒回傳id他會用新增一筆資料庫的方式,這裡是編輯,故要接收id的參數回傳,讓資料庫不要額外新增一筆-->
+                <input type="hidden" th:value="*{id}" name="id">
                 <div class="form-group">
                     <label for="nameId">書名</label>
-                    <input type="text" name="name" id="nameId" class="form-control">
+                    <input type="text" name="name" id="nameId" class="form-control" th:field="*{name}">
                 </div>
                 <div class="form-group">
                     <label for="authorId">作者</label>
-                    <input type="text" name="author" id="authorId" class="form-control">
+                    <input type="text" name="author" id="authorId" class="form-control" th:field="*{author}">
                 </div>
                 <div class="form-group">
                     <label for="isbnId">isbn</label>
-                    <input type="text" name="isbn" id="isbnId" class="form-control">
+<!--                    value or field 皆可 field不只針對input=text -->
+                    <input type="text" name="isbn" id="isbnId" class="form-control" th:field="*{isbn}">
                 </div>
                 <div class="form-group">
                     <label for="descriptionId">描述</label>
-                    <input type="text" name="description" id="descriptionId" class="form-control">
+                    <input type="text" name="description" id="descriptionId" class="form-control" th:field="*{description}">
                 </div>
                 <div class="form-group">
                     <label for="statusId">狀態</label>
-                    <select name="status" id="statusId" class="form-control">
-                        <option value="0">想讀</option>
-                        <option value="1">在讀</option>
-                        <option value="2">已讀</option>
+                    <select name="status" id="statusId" class="form-control" >
+                        <option value="0" th:selected="(*{status} == '0')">想讀</option>
+                        <option value="1" th:selected="(*{status} == '1')">在讀</option>
+                        <option value="2" th:selected="(*{status} == '2')">已讀</option>
                     </select>
                 </div>
                 <br>
