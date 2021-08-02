@@ -12,6 +12,12 @@
 
     <div class="container">
         <h2 class="modal-header">書單列表</h2>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+<!--            <a href="#" class="btn-close" data-dismiss="">&times;</a>-->
+            <strong>恭喜, </strong>
+            <span th:text="${message}">信息提交成功</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <p class="text-end"><a href="./input.html" th:href="@{/books/input}" class="btn btn-primary ">新增</a></p>
         <table class="table table-bordered">
             <thead>

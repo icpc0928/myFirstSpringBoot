@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -78,9 +79,20 @@ public class BookController {
      * @return
      */
     @PostMapping("/books")
-    public String post(Book book){
-        bookService.save(book);
+    public String post(Book book, final RedirectAttributes ){
+        Book book1 = bookService.save(book);
+        if(book1 != null){
+            model.addAttribute("message", "<" + book1.getName() + "> 信息提交成功");
+        }
         return "redirect:/books";
     }
+
+    //Model 只能在一個請求中使用
+
+    /**
+     * POST ---> redirect ---> (GET)/books
+     */
+
+
 
 }
