@@ -12,7 +12,8 @@
 
     <div class="container">
         <h2 class="modal-header">書單列表</h2>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+<!--        unless取得message 除非不是空的否則不顯示-->
+        <div class="alert alert-success alert-dismissible fade show" role="alert" th:unless="${#strings.isEmpty(message)}">
 <!--            <a href="#" class="btn-close" data-dismiss="">&times;</a>-->
             <strong>恭喜, </strong>
             <span th:text="${message}">信息提交成功</span>
@@ -40,7 +41,7 @@
                     first/last: 第一/最後一條 回傳boolean
                         -->
             <!--迭代(each) iter(名稱自訂)=獲得foreach中的i -->
-            <tr th:each="book,iter:${books}" th:class="${iter.even} ? 'bg-gradient' : 'bg-light'">
+            <tr th:each="book,iter:${page.content}" th:class="${iter.even} ? 'bg-gradient' : 'bg-light'">
                 <td th:text="${iter.count}">1</td>
 <!--                <td ><a href="#" th:text="${book.name}" th:href="@{/books/{id}(id=${book.id})}">書名</a></td>-->
                 <td ><a href="#" th:text="${book.name}" th:href="@{'/books/' + ${book.id}}">書名</a></td>
@@ -54,10 +55,22 @@
                 </td>
                 <td>
                     <a href="#" th:href="@{/books/{id}/input(id=${book.id})}">更新</a>
+                    <a href="#" th:href="@{/books/{id}/delete(id=${book.id})}">刪除</a>
                 </td>
             </tr>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="false" th:href="@{'/books?page=' + ${page.number-1}}" th:unless="${page.first}">上一頁</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" href="#" th:href="@{/books(page=${page.number} + 1)}" th:unless="${page.last}">下一頁</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
 

@@ -4,9 +4,13 @@
 
 #指定當前活躍的配置文件 就會運行application-dev.yml
 #配置文件格式 application-{自定義名字}.yml
+#devtools.restart.trigger-file定義自動重啟的文件 有更改.trigger的文件時,rerun
 spring:
   profiles:
     active: dev
+  devtools:
+    restart:
+      trigger-file: .trigger
 
 #配置屬性 供方便使用 於類別內的參數上使用 @Value(${book.name})  下方定義名稱有上下級別之分(即book屬性底下的屬性)
 book:
@@ -14,4 +18,6 @@ book:
   author: Leo
   isbn: ${random.int}
   description: ${book.name} , 這本書不錯
+
+
 

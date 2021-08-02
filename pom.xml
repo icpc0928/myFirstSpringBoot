@@ -52,6 +52,14 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+<!--自動重啟-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
 
 
     </dependencies>

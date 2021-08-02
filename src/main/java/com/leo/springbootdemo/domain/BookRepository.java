@@ -1,5 +1,7 @@
 package com.leo.springbootdemo.domain;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,8 +15,13 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     //JPA官方文檔有規範名稱怎麼命名:
     //https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
 
+    //分頁查詢
+    Page<Book> findAll(Pageable pageable);
+
     //自定義一個方法供使用 但命稱有規範
     List<Book> findByAuthor(String author);
+//    List<Book> findByAuthor(String author, Pageable pageable);  //含分頁
+
 
     //當一次傳兩個參數過來
     List<Book> findByAuthorAndStatus(String author, int status);
@@ -41,6 +48,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("delete from Book b where b.id = ?1")
     int deleteByJPQL(long id);
 
+    //testTrigger
 
 
 }

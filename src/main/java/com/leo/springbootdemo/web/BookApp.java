@@ -3,6 +3,11 @@ package com.leo.springbootdemo.web;
 import com.leo.springbootdemo.domain.Book;
 import com.leo.springbootdemo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,10 +21,91 @@ public class BookApp {
     @Autowired
     private BookService bookService;
 
-    //獲取讀書清單列表
+//    //獲取讀書清單列表
+//    @GetMapping("/books")
+//    public List<Book> getAll(){
+//        return bookService.findAll();
+//
+//    }
+
+    //獲取讀書清單列表 (分頁)
     @GetMapping("/books")
-    public List<Book> getAll(){
-        return bookService.findAll();
+    public Page<Book> getAll(@PageableDefault(size = 5, sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable){
+        /**
+         * {
+         *     "content": [      //內容
+         *         {
+         *             "id": 21,
+         *             "name": "安安",
+         *             "author": "Leo",
+         *             "isbn": "000",
+         *             "description": "jj202020",
+         *             "status": 0
+         *         },
+         *         {
+         *             "id": 20,
+         *             "name": "安安",
+         *             "author": "Leo",
+         *             "isbn": "000",
+         *             "description": "jj202020",
+         *             "status": 1
+         *         },
+         *         {
+         *             "id": 19,
+         *             "name": "五號",
+         *             "author": "作者",
+         *             "isbn": "4546564656",
+         *             "description": "d d",
+         *             "status": 2
+         *         },
+         *         {
+         *             "id": 17,
+         *             "name": "安安",
+         *             "author": "Leo",
+         *             "isbn": "000",
+         *             "description": "jj;j'j'jlk';",
+         *             "status": 0
+         *         },
+         *         {
+         *             "id": 16,
+         *             "name": "安安",
+         *             "author": "Leo",
+         *             "isbn": "000",
+         *             "description": "jj;j'j'jlk';",
+         *             "status": 0
+         *         }
+         *     ],
+         *     "pageable": {
+         *         "sort": {
+         *             "sorted": true,
+         *             "unsorted": false,
+         *             "empty": false
+         *         },
+         *         "offset": 5,
+         *         "pageNumber": 1,
+         *         "pageSize": 5,
+         *         "unpaged": false,
+         *         "paged": true
+         *     },
+         *     "totalElements": 25,  總共有幾個項目
+         *     "totalPages": 5,      總共有幾頁
+         *     "last": false,        是否是最後一頁
+         *     "number": 1,          目前是第幾頁 0開始
+         *     "size": 5,            總共幾頁
+         *     "sort": {
+         *         "sorted": true,
+         *         "unsorted": false,
+         *         "empty": false
+         *     },
+         *     "numberOfElements": 5, 當前頁有幾個項目 (如果是最後一頁可能不滿預設個數)
+         *     "first": false,
+         *     "empty": false
+         * }
+         */
+
+//        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        return bookService.findAllByPage(pageable);
+
     }
 
 //    /**
